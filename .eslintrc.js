@@ -33,7 +33,11 @@ module.exports = {
   },
   rules: {
     'quote-props': ['error', 'as-needed', { keywords: true, numbers: true }],
-    indent: ['error', 2, { ignoredNodes: 'TemplateLiteral' }],
+    indent: [
+      'error',
+      2,
+      { ignoredNodes: ['TemplateLiteral', 'OptionalMemberExpression'] },
+    ],
     'no-unused-vars': [
       'error',
       {
