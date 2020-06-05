@@ -7,7 +7,13 @@ First, ensure the following **required** environment variables are set
 * `NEXT_CMS_CONTENTFUL_ACCESS_TOKEN` - Access token used to get data from contentful
 * `NEXT_CMS_CONTENTFUL_PREVIEW_ACCESS_TOKEN` - Acces token used to preview draft posts from Contentful
 
-These values can usuaully be found in the settings of contentful, under the "**API Keys**" subheading
+These values can usuaully be found in the settings of contentful, under the "**API Keys**" subheading 
+
+<details>
+  <summary><strong>screenshot of settings menu</strong></summary>
+  <img src='https://github.com/GeorgeWL/next-app-contentful/blob/master/settings%20menu%20example.png'/>
+</details>
+
 
 then, run the development server:
 
