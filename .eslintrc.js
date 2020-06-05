@@ -10,6 +10,7 @@ module.exports = {
     'plugin:react/recommended',
     'prettier/react',
     'plugin:prettier/recommended',
+    'plugin:cypress/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -24,7 +25,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'prettier', 'cypress'],
   parser: 'babel-eslint',
   settings: {
     react: {
