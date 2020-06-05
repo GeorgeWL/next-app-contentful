@@ -41,6 +41,7 @@ module.exports = {
         args: 'after-used',
       },
     ],
+    'react/prop-types': 'error',
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
