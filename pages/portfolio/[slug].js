@@ -6,7 +6,7 @@ import {
 } from '../../contentful/parser'
 const PortfolioPage = ({ preview, page, morePages }) => (
   <div className={styles.container}>
-    <h1>{page?.title}</h1>
+    <h1>{page.title}</h1>
     {JSON.stringify({
       preview,
       page,
@@ -21,7 +21,16 @@ PortfolioPage.defaultProps = {
 
 PortfolioPage.propTypes = {
   preview: PropTypes.bool,
-  page: PropTypes.object,
+  page: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    slug: PropTypes.string,
+    assets: PropTypes.arrayOf(PropTypes.object),
+    content: PropTypes.object,
+    excerpt: PropTypes.string,
+    coverImage: PropTypes.object,
+    technologies: PropTypes.arrayOf(PropTypes.object),
+  }),
   morePages: PropTypes.array,
 }
 
