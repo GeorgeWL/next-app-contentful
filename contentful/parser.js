@@ -1,34 +1,53 @@
 import { createClient } from 'contentful'
 
 const client = createClient({
-  space: process.env.NEXT_EXAMPLE_CMS_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_EXAMPLE_CMS_CONTENTFUL_ACCESS_TOKEN,
+  space: process.env.NEXT_CMS_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_CMS_CONTENTFUL_ACCESS_TOKEN,
 })
 
 const previewClient = createClient({
-  space: process.env.NEXT_EXAMPLE_CMS_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_EXAMPLE_CMS_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+  space: process.env.NEXT_CMS_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_CMS_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
   host: 'preview.contentful.com',
 })
 
-const getClient = (preview) => (preview ? previewClient : client)
+const getClient = preview => (preview ? previewClient : client)
 
-function parseAuthor({ fields }) {
-  return {
-    name: fields.name,
-    picture: fields.picture.fields.file,
-  }
+function parseAssets(fields) {
+  return (
+    fields?.map(item => {
+      return {
+        title: item.fields.title,
+        src: item.fields.file.url,
+        meta: item.fields.file.details,
+      }
+    }) ?? []
+  )
 }
 
-function parsePortfolio({ fields }) {
+function parseTechnologies(fields) {
+  return (
+    fields?.map(item => {
+      return {
+        url: item.fields.url,
+        title: item.fields.name,
+        logo: item.fields.logo.fields.file.url,
+        meta: item.fields.logo.fields.file.details,
+      }
+    }) ?? []
+  )
+}
+
+function parsePortfolio({ fields, sys }) {
   return {
+    id: sys.id,
     title: fields.title,
     slug: fields.slug,
-    date: fields.date,
+    assets: parseAssets(fields.assets),
     content: fields.content,
     excerpt: fields.excerpt,
-    coverImage: fields.coverImage.fields.file,
-    author: parseAuthor(fields.author),
+    coverImage: fields?.headerAsset ?? null,
+    technologies: parseTechnologies(fields.technologies),
   }
 }
 
@@ -50,7 +69,7 @@ export async function getAllPortfoliosWithSlug() {
     content_type: 'portfolio',
     select: 'fields.slug',
   })
-  return parsePortfolioEntries(entries, (portfolio) => portfolio.fields)
+  return parsePortfolioEntries(entries, portfolio => portfolio.fields)
 }
 
 export async function getAllPortfoliosForHome(preview) {
@@ -69,13 +88,13 @@ export async function getPortfolioAndMorePortfolios(slug, preview) {
   })
   const entries = await getClient(preview).getEntries({
     content_type: 'portfolio',
-    limit: 5,
-    order: '-fields.date',
+    limit: 2,
+    order: '-sys.createdAt',
     'fields.slug[nin]': slug,
   })
 
   return {
-    portfolio: parsePortfolioEntries(entry)[0],
-    morePortfolios: parsePortfolioEntries(entries),
+    page: parsePortfolioEntries(entry)[0],
+    morePages: parsePortfolioEntries(entries),
   }
 }
