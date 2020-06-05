@@ -9,7 +9,9 @@
     "lint": "eslint . -c .eslintrc.js --ext js,jsx --fix"
   },
   "husky": {
-    "pre-push": "npm run lint"
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   },
   "dependencies": {
     "next": "9.4.4",
