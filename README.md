@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Developing
 
+**Ensure you are on a branch which is not master, as the continous integration tooling will automatically push changes on this branch onto the live production site.**
+
 First, ensure the following **required** environment variables are set
 * `NEXT_CMS_CONTENTFUL_SPACE_ID` - the space ID of the contentful app
 * `NEXT_CMS_CONTENTFUL_ACCESS_TOKEN` - Access token used to get data from contentful
