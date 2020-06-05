@@ -1,57 +1,66 @@
+/* eslint-disable quote-props */
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true,
-    'node': true
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
   },
-  'extends': [
+  extends: [
     'eslint:recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'prettier/react',
+    'plugin:prettier/recommended',
   ],
-  'globals': {
-    'Atomics': 'readonly',
-    'SharedArrayBuffer': 'readonly',
-    'React': 'writeable'
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    React: 'writeable',
   },
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    'ecmaVersion': 2018,
-    'sourceType': 'module'
+    allowImportExportEverywhere: true,
+    ecmaVersion: 2018,
+    sourceType: 'module',
   },
-  'plugins': [
-    'react'
-  ],
-  'settings': {
-    'react': {
-      'version': 'detect'
+  plugins: ['react', 'prettier'],
+  parser: 'babel-eslint',
+  settings: {
+    react: {
+      version: 'detect',
     },
   },
-  'rules': {
-    'indent': [
+  rules: {
+    'quote-props': ['error', 'as-needed', { keywords: true, numbers: true }],
+    indent: [
       'error',
-      2
+      2,
+      { ignoredNodes: ['TemplateLiteral', 'OptionalMemberExpression'] },
     ],
     'no-unused-vars': [
       'error',
       {
-        'vars': 'all',
-        'args': 'after-used'
-      }
+        vars: 'all',
+        args: 'after-used',
+      },
     ],
-    'linebreak-style': [
+    'react/prop-types': 'error',
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    'react/react-in-jsx-scope': 'off',
+    'prettier/prettier': [
       'error',
-      'unix'
+      {
+        printWidth: 80,
+        semi: false,
+        jsxSingleQuote: true,
+        singleQuote: true,
+        useTabs: false,
+        bracketSpacing: true,
+        arrowParens: 'avoid',
+      },
     ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'never'
-    ],
-    'react/react-in-jsx-scope': 'off'
-  }
+  },
 }
