@@ -33,7 +33,7 @@ module.exports = {
   },
   rules: {
     'quote-props': ['error', 'as-needed', { keywords: true, numbers: true }],
-    indent: ['error', 2],
+    indent: ['error', 2, { ignoredNodes: 'TemplateLiteral' }],
     'no-unused-vars': [
       'error',
       {
@@ -55,6 +55,7 @@ module.exports = {
         singleQuote: true,
         useTabs: false,
         bracketSpacing: true,
+        arrowParens: 'avoid',
       },
     ],
   },
