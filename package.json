@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . -c .eslintrc.json --ext js,jsx --fix"
+    "lint": "eslint . -c .eslintrc.js --ext js,jsx --fix"
   },
   "husky": {
     "pre-push": "npm run lint"
