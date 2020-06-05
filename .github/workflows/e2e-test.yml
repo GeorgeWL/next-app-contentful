@@ -1,12 +1,20 @@
-name: End-to-end tests
-on: [push]
+name: End To End Tests
+on:
+  push:
+    branches:
+      - master
+    paths: ["pages/*", "contentful/*",'next.config.js']
 jobs:
-  cypress-run:
-    runs-on: ubuntu-16.04
+  cypress-chrome:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: build
+        uses: npm run build
       - name: Cypress run
         uses: cypress-io/github-action@v1
+        with:
+          start: npm run start
+          browser: chrome
+          headless: true
