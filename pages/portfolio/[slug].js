@@ -18,20 +18,20 @@ const PortfolioPage = ({ preview, page, morePages }) => (
 PortfolioPage.defaultProps = {
   preview: false,
 }
-
+const PAGE_SHAPE = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  slug: PropTypes.string,
+  assets: PropTypes.arrayOf(PropTypes.object),
+  content: PropTypes.object,
+  excerpt: PropTypes.string,
+  coverImage: PropTypes.object,
+  technologies: PropTypes.arrayOf(PropTypes.object),
+}
 PortfolioPage.propTypes = {
   preview: PropTypes.bool,
-  page: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    slug: PropTypes.string,
-    assets: PropTypes.arrayOf(PropTypes.object),
-    content: PropTypes.object,
-    excerpt: PropTypes.string,
-    coverImage: PropTypes.object,
-    technologies: PropTypes.arrayOf(PropTypes.object),
-  }),
-  morePages: PropTypes.array,
+  page: PropTypes.shape(PAGE_SHAPE),
+  morePages: PropTypes.arrayOf(PropTypes.shape(PAGE_SHAPE)),
 }
 
 export default PortfolioPage
