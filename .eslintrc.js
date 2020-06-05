@@ -25,6 +25,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'prettier'],
+  parser: 'babel-eslint',
   settings: {
     react: {
       version: 'detect',

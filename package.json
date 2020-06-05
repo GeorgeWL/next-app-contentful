@@ -19,6 +19,7 @@
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "contentful": "^7.14.4",
     "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
