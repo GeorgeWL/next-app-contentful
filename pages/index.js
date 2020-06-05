@@ -1,7 +1,7 @@
 import Head from 'next/head'
-a;
-b;
-caches;
+a
+b
+caches
 export default function Home() {
   return (
     <div className="container">
