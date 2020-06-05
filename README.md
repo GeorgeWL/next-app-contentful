@@ -21,6 +21,25 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 As long as there are no errors, pages should auto-update as you edit the file.
 
+## To run a copy of the production app locally
+
+first build the app
+
+```bash
+  npm run build
+  # or
+  yarn build
+```
+
+then run the app using the start script
+
+```bash
+  npm run start
+  # or
+  yarn start
+```
+
+
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
