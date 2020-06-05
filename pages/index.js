@@ -1,5 +1,5 @@
 import Head from 'next/head'
-a
+a;
 export default function Home() {
   return (
     <div className="container">
