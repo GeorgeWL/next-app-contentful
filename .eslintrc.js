@@ -33,6 +33,13 @@ module.exports = {
       'error',
       2
     ],
+    'no-unused-vars': [
+      'error',
+      {
+        'vars': 'all',
+        'args': 'after-used'
+      }
+    ],
     'linebreak-style': [
       'error',
       'unix'
